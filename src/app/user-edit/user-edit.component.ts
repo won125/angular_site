@@ -29,24 +29,24 @@ export class UserEditComponent implements OnInit {
   };
   formErrorMessages = {
     'username': {
-      'required': 'Username is required!',
-      'pattern': 'Should be 4-12 characters!',
+      'required': '아이디를 입력해주십시오.',
+      'pattern': '아이디는 4~12글자를 사용해야 합니다!',
     },
     'currentPassword': {
-      'required': 'Username is required!',
+      'required': '비밀번호를 입력해 주십시오!',
     },
     'name': {
-      'required': 'Name is required!',
-      'pattern': 'Should be 4-12 characters!',
+      'required': '이름을 입력해주십시오!',
+      'pattern': '이름은 3-12자 사이로 입력해 주십시오!',
     },
     'email': {
-      'pattern': 'Should be a vaild email address!',
+      'pattern': '올바른 이메일주소로 입력해 주십시오!',
     },
     'newPassword': {
-      'pattern': 'Should be minimum 8 characters of alphabet and number combination!',
+      'pattern': '비밀번호는 최소 8자 이상 영어와 숫자를 혼합해주셔야합니다!',
     },
     'passwordConfirmation': {
-      'match': 'Password Confirmation does not matched!',
+      'match': '비밀번호가 같지 않습니다!',
     },
   };
   buildForm(): void {
@@ -94,7 +94,7 @@ export class UserEditComponent implements OnInit {
     if(this.form.valid){
       this.userService.update(this.user.username, this.form.value)
       .then(data =>{
-        this.router.navigate(['/', 'users', this.user.username]);
+      this.router.navigate(['/','user','info']);
       })
       .catch(response =>{
         this.errorResponse = response;
@@ -104,7 +104,7 @@ export class UserEditComponent implements OnInit {
   }
 
   delete() {
-    var answer = confirm("Do you want to delete your account?");
+    var answer = confirm("정말 회원 탈퇴를 하시겠습니까?");
     if(answer){
       this.userService.destroy(this.user.username)
       .then(data =>{

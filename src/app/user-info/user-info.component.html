@@ -1,0 +1,45 @@
+<!--profile-->
+<div class="background">
+<div class="container">
+    <div class="row">
+        <div class="myprofile col-md-3">
+            <img src=".\assets\images\p1.jpg" alt="..." class="img-rounded"><br><br><hr>
+              <h3 class="contentBoxTop">{{user.username}}</h3>
+              <a [routerLink]="['/','users', user.username, 'edit']" class="text-center"><h4>회원정보수정</h4></a>
+        </div>
+
+        <div class="mtprofile-list col-md-9">
+            <h3>나의 프로젝트</h3>
+            <div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">목록1</a></li>
+                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">목록2</a></li>
+                  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">목록3</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home"><br>
+                    <ul class="nav navbar-nav">
+                      <li [routerLinkActive]="['active']">
+                        <a [routerLink]="['/','','']">MY 단체</a>
+                      </li>
+                    </ul>
+                      <a href=""><p>보유 포인트</p></a><br>
+                      <a href=""><p>후원 이력</p></a><br>
+                      <a href=""><p>관심 리스트</p></a><br>
+                      <a href=""><p>정기 결제</p></a><br>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="profile">...</div>
+                  <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                  <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>

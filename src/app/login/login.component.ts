@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
   };
   formErrorMessages = {
     'username': {
-      'required': 'Username is required!',
+      'required': '아이디를 입력해 주십시오!',
     },
     'password': {
-      'required': 'Password is required!',
+      'required': '비밀번호를 입력해 주십시오!',
     },
   };
   buildForm(): void {

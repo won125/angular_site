@@ -1,74 +1,87 @@
-<div class="page page-users">
+<!--profile-->
+<div class="background">
+<div class="container">
+    <div class="row">
+        <div class="myprofile col-md-3">
+            <img src=".\assets\images\profile1.jpg" alt="..." class="img-rounded"><br><br><hr>
+        </div>
 
-  <div class="buttons">
-    <a [routerLink]="['/','users',user.username]" class="btn btn-default">Back</a>
-    <span *ngIf="authService.isLoggedIn() && authService.getCurrentUser()._id == user._id"
-      (click)="delete()"
-      class="btn btn-default delete">Delete</span>
-  </div>
+        <div class="mtprofile-list col-md-9">
+          <div class="page page-users">
 
-  <form class="user-form form-horizontal"
-    [formGroup]="form"
-    (ngSubmit)="submit()"
-    class="login-form form-horizontal"
-  >
-    <div class="contentBox">
-      <h3 class="contentBoxTop">회원정보 수정</h3>
-      <fieldset>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.currentPassword}">
-          <label for="currentPassword" class="col-sm-12 control-label">비밀번호 확인*</label>
-          <div class="col-sm-9 col-sm-offset-3">
-            <input class="form-control" type="password" formControlName="currentPassword" id="currentPassword">
-            <span *ngIf="formErrors.currentPassword" class="help-block">{{formErrors.currentPassword}}</span>
+            <div class="buttons">
+              <a [routerLink]="['/','user','info']" class="btn btn-default">Back</a>
+              <span *ngIf="authService.isLoggedIn() && authService.getCurrentUser()._id == user._id"
+                (click)="delete()"
+                class="btn btn-default delete">Delete</span>
+            </div>
+
+            <form class="user-form form-horizontal"
+              [formGroup]="form"
+              (ngSubmit)="submit()"
+              class="login-form form-horizontal"
+            >
+              <div class="contentBox">
+                <h3 class="contentBoxTop">회원정보 수정</h3>
+                <fieldset>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.currentPassword}">
+                    <label for="currentPassword" class="col-sm-12 control-label">비밀번호 확인*</label>
+                    <div class="col-sm-9 col-sm-offset-3">
+                      <input class="form-control" type="password" formControlName="currentPassword" id="currentPassword">
+                      <span *ngIf="formErrors.currentPassword" class="help-block">올바른 비밀번호를 입력해 주십시오!</span>
+                    </div>
+                  </div>
+                  <hr/>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.username}">
+                    <label for="username" class="col-sm-3 control-label">아이디 *</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" type="text" formControlName="username" id="username" readonly>
+                      <span *ngIf="formErrors.username" class="help-block">{{formErrors.username}}</span>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.name}">
+                    <label for="name" class="col-sm-3 control-label">이름*</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" type="text" formControlName="name" id="name" readonly>
+                      <span *ngIf="formErrors.name" class="help-block">{{formErrors.name}}</span>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+                    <label for="email" class="col-sm-3 control-label">이메일</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" type="text" formControlName="email" id="email" readonly>
+                      <span *ngIf="formErrors.email" class="help-block">{{formErrors.email}}</span>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.newPassword}">
+                    <label for="newPassword" class="col-sm-12 control-label">새 비밀번호</label>
+                    <div class="col-sm-9 col-sm-offset-3">
+                      <input class="form-control" type="password" formControlName="newPassword" id="newPassword">
+                      <span *ngIf="formErrors.newPassword" class="help-block">{{formErrors.newPassword}}</span>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-error': formErrors.passwordConfirmation}">
+                    <label for="passwordConfirmation" class="col-sm-12 control-label">변경된 비밀번호 확인</label>
+                    <div class="col-sm-9 col-sm-offset-3">
+                      <input class="form-control" type="password" formControlName="passwordConfirmation" id="passwordConfirmation">
+                      <span *ngIf="formErrors.passwordConfirmation" class="help-block">{{formErrors.passwordConfirmation}}</span>
+                    </div>
+                  </div>
+                  <p>
+                    <small>*은 필수 작성부분입니다.</small>
+                  </p>
+                </fieldset>
+                <div *ngIf="errorResponse?.message" class="alert alert-danger">
+                  작성되지 않은 부분을 확인하여 다시 작성해 주십시오!
+                </div>
+              </div>
+              <div class="buttons">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+
           </div>
+
         </div>
-        <hr/>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.username}">
-          <label for="username" class="col-sm-3 control-label">닉네임*</label>
-          <div class="col-sm-9">
-            <input class="form-control" type="text" formControlName="username" id="username">
-            <span *ngIf="formErrors.username" class="help-block">{{formErrors.username}}</span>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.name}">
-          <label for="name" class="col-sm-3 control-label">이름*</label>
-          <div class="col-sm-9">
-            <input class="form-control" type="text" formControlName="name" id="name">
-            <span *ngIf="formErrors.name" class="help-block">{{formErrors.name}}</span>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
-          <label for="email" class="col-sm-3 control-label">이메일</label>
-          <div class="col-sm-9">
-            <input class="form-control" type="text" formControlName="email" id="email">
-            <span *ngIf="formErrors.email" class="help-block">{{formErrors.email}}</span>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.newPassword}">
-          <label for="newPassword" class="col-sm-12 control-label">새 비밀번호</label>
-          <div class="col-sm-9 col-sm-offset-3">
-            <input class="form-control" type="password" formControlName="newPassword" id="newPassword">
-            <span *ngIf="formErrors.newPassword" class="help-block">{{formErrors.newPassword}}</span>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{'has-error': formErrors.passwordConfirmation}">
-          <label for="passwordConfirmation" class="col-sm-12 control-label">비밀번호 확인</label>
-          <div class="col-sm-9 col-sm-offset-3">
-            <input class="form-control" type="password" formControlName="passwordConfirmation" id="passwordConfirmation">
-            <span *ngIf="formErrors.passwordConfirmation" class="help-block">{{formErrors.passwordConfirmation}}</span>
-          </div>
-        </div>
-        <p>
-          <small>*Required</small>
-        </p>
-      </fieldset>
-      <div *ngIf="errorResponse?.message" class="alert alert-danger">
-        {{errorResponse?.message}}
-      </div>
     </div>
-    <div class="buttons">
-      <button type="submit" class="btn btn-default">Submit</button>
     </div>
-  </form>
-
-</div>

@@ -22,6 +22,9 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { CampaignDetailComponent } from './campaign-detail/campaign-detail.component';
+import { CampaignListComponent } from './campaign-list/campaign-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     UserIndexComponent,
     UserShowComponent,
     UserEditComponent,
+    UserInfoComponent,
+    CampaignDetailComponent,
+    CampaignListComponent,
   ],
   imports: [
     BrowserModule,

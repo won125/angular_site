@@ -12,11 +12,15 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { CampaignListComponent } from './campaign-list/campaign-list.component';
+import { CampaignDetailComponent } from './campaign-detail/campaign-detail.component';
 
 const routes: Routes = [
   { path: '',  component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users/new',  component: UserNewComponent },
+
   { path: 'users', canActivate: [AuthGuard],
     children: [
       { path: '',
@@ -39,6 +43,9 @@ const routes: Routes = [
       },
     ]
   },
+  { path: 'user/info',  component: UserInfoComponent },
+  { path: 'campaign/list',  component: CampaignListComponent },
+  { path: 'campaign/detail',  component: CampaignDetailComponent },
   { path: '**', component: Error404Component },
 ];
 

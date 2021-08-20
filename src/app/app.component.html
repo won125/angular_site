@@ -20,15 +20,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li [routerLinkActive]="['active']">
-              <a [routerLink]="['/','users']">게시판</a>
+              <a [routerLink]="['/','campaign','list']">후원하기</a>
             </li>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
             <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']">
               <a [routerLink]="['/','login']">로그인</a>
             </li>
             <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']">
               <a [routerLink]="['/','users','new']">회원가입</a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()" >
+              <a [routerLink]="['/','user','info']">회원정보</a>
             </li>
             <li *ngIf="authService.isLoggedIn()">
               <a (click)="authService.logout()">로그아웃</a>
